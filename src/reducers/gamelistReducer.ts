@@ -1,8 +1,4 @@
 
-export interface GameState {
-  notes: string[]
-}
-
 const initialState = {
     loading: false,
     data: [],
@@ -10,7 +6,9 @@ const initialState = {
     count: 0
   };
 
-  const rootReducer = (state = initialState, action: { type: any; payload: { results: any; count: any; }; }) => {
+
+
+  const gamelistReducer = (state = initialState, action: { type: any; payload: { results: any; count: any; }; }) => {
     switch (action.type) {
       case "LIST_LOADING":
         return {
@@ -37,4 +35,4 @@ const initialState = {
     }
   };
   
-  export default rootReducer
+  export default gamelistReducer

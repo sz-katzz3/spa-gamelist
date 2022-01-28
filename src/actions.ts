@@ -1,53 +1,24 @@
 import axios from "axios"
 import {Dispatch} from "redux";
+import {LIST_FAIL, LIST_LOADING, LIST_SUCCESS, GameDispatchTypes} from "./actionTypes";
 
-export const LIST_LOADING = "LIST_LOADING";
-export const LIST_FAIL = "LIST_FAIL";
-export const LIST_SUCCESS = "LIST_SUCCESS";
 
-export type GameItem = {
-    details: GameFeature[],
-
-  }
-
-  export type GameFeature = {
-    details: {
-      name: string
-    }
-  }
-
-  export const GetGameList = (data: string) => async (dispatch: Dispatch<GameDispatchTypes>) => {
-    try {
-      dispatch({
-        type: LIST_LOADING
+export const GetGameList = (data: string) => async (dispatch: Dispatch<GameDispatchTypes>) => {
+  try {
+    dispatch({
+      type: LIST_LOADING
       })
   
-      const res = await axios.get(`https://virtserver.swaggerhub.com/selfdecode.com/game-challenge/1.0.0/game/${data}`);
+    const res = await axios.get(`https://virtserver.swaggerhub.com/selfdecode.com/game-challenge/1.0.0/game/${data}`);
   
-      dispatch({
-        type: LIST_SUCCESS,
-        payload: res.data
+    dispatch({
+      type: LIST_SUCCESS,
+      payload: res.data
       })
   
-    } catch(e) {
-      dispatch({
-        type: LIST_FAIL
-      })
-    }
-  };
-
-  export interface ListLoading {
-    type: typeof LIST_LOADING
+  } catch(e) {
+    dispatch({
+      type: LIST_FAIL
+    })
   }
-  
-  export interface ListFail {
-    type: typeof LIST_FAIL
-  }
-  
-  export interface ListSuccess {
-    type: typeof LIST_SUCCESS,
-    payload: GameItem
-  }
-  
-  
-  export type GameDispatchTypes = ListLoading | ListFail | ListSuccess
+};

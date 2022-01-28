@@ -6,14 +6,13 @@ export const LIST_FAIL = "LIST_FAIL";
 export const LIST_SUCCESS = "LIST_SUCCESS";
 
 export type GameItem = {
-    features: GameFeature[],
+    details: GameFeature[],
 
   }
 
   export type GameFeature = {
-    features: {
+    details: {
       name: string
-      url: string
     }
   }
 

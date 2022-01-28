@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import {useDispatch, useSelector} from "react-redux";
+import {RootStore} from "./store";
+import {GetGameList} from "./actions";
+
 
 
 function App() {
+  const dispatch = useDispatch();
+  const [gameName, setGameName] = useState("");
+  const gameState = useSelector((state: RootStore) => state.GameList);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setGameName(event.target.value);
+  const handleSubmit = () => dispatch(GetGameList(gameName));
+
+  console.log("game state:", gameState);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input type="text" onChange={handleChange}/>
+      <button onClick={handleSubmit}>Search</button>
     </div>
   );
 }

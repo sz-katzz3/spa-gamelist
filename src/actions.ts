@@ -16,13 +16,13 @@ export type GameItem = {
     }
   }
 
-  export const GetGameList = (game: string) => async (dispatch: Dispatch<GameDispatchTypes>) => {
+  export const GetGameList = (data: string) => async (dispatch: Dispatch<GameDispatchTypes>) => {
     try {
       dispatch({
         type: LIST_LOADING
       })
   
-      const res = await axios.get(`https://virtserver.swaggerhub.com/selfdecode.com/game-challenge/1.0.0/game/`);
+      const res = await axios.get(`https://virtserver.swaggerhub.com/selfdecode.com/game-challenge/1.0.0/game/${data}`);
   
       dispatch({
         type: LIST_SUCCESS,

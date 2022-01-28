@@ -1,3 +1,9 @@
+import { GameItem } from "../actions";
+
+interface initialState {
+  loading: boolean;
+  game?: GameItem
+}
 
 const initialState = {
     loading: false,

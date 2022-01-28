@@ -3,6 +3,7 @@ import './App.css';
 import {useDispatch, useSelector} from "react-redux";
 import {RootStore} from "./store";
 import {GetGameList} from "./actions";
+import gamelistReducer from './reducers/gamelistReducer';
 
 
 
@@ -19,8 +20,15 @@ function App() {
     <div className="App">
       <input type="text" onChange={handleChange}/>
       <button onClick={handleSubmit}>Search</button>
+     {gameState.data && (
+    <div>
+      {gameState.data.id}{gameState.data.name}{gameState.data.intro_text}
+    )
+        </div>
+      )}
     </div>
   );
 }
+
 
 export default App;

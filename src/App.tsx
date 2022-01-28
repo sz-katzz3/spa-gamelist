@@ -3,6 +3,10 @@ import './App.css';
 import {useDispatch, useSelector} from "react-redux";
 import {RootStore} from "./store";
 import {GetGameList} from "./actions";
+import Box from "./components/Box/Box";
+import Grid from "./components/Grid/Grid";
+import GridRuler from "./components/GridRuler/GridRuler";
+
 
 
 
@@ -16,12 +20,24 @@ function App() {
   console.log("game state:", gameState);
 
   return (
-    <div className="App">
+    <div className="App" style={{ margin: "16px", position: "relative", height: "100vh" }}>
+
       <input type="text" onChange={handleChange}/>
       <button onClick={handleSubmit}>Search</button>
       {gameState.data && (
         <div>
-          {gameState.data.id}{gameState.data.name}{gameState.data.intro_text}
+          <GridRuler spacing="sm"></GridRuler>
+          <Grid
+        container
+        spacing="sm"
+        alignItems="center"
+        style={{ height: "100%" }}
+      >
+        <Grid item xs={1} sm={6} md={4} lg={3}>
+          <Box> {gameState.data.name}</Box>
+        </Grid>
+
+      </Grid>
         </div>
       )}
     </div>

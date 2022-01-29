@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div className="App" style={{ margin: "16px", position: "relative", height: "100vh" }}>
-
+      <div><p>What would you like to play?</p><br></br></div>
       <input type="text" onChange={handleChange}/>
       <button onClick={handleSubmit}>Search</button>
       {gameState.data && (

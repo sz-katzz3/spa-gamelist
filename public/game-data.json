@@ -1,0 +1,22 @@
+
+{"Cards":[
+    { "question": "Red", 
+    "correct_answer": "Red", 
+    "incorrect_answer": "Blue"
+    },
+
+    { "question": "Red", 
+    "correct_answer": "Red", 
+    "incorrect_answer": "Blue"
+    },
+
+    { "question": "Red", 
+    "correct_answer": "Red", 
+    "incorrect_answer": "Blue"
+    },
+
+    { "question": "Red", 
+    "correct_answer": "Red", 
+    "incorrect_answer": "Blue"
+    }
+    ]}

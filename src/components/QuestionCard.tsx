@@ -1,37 +1,43 @@
 import React from "react";
+import { AnswerObject } from './Game';
+import { Wrapper, ButtonWrapper } from '../layout/App.styles'
+
 
 type Props = {
-  question: string;
-  answers: string[];
-  callback: any;
-  userAnswer: any;
-  questionNumber: number;
-  totalQuestions: number;
+    question: string;
+    answers: string[];
+    callback: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    userAnswer: AnswerObject | undefined;
+    questionNumber: number;
+    totalQuestions: number;
 };
 const QuestionCard: React.FC<Props> = ({
-  question,
-  answers,
-  callback,
-  userAnswer,
-  questionNumber,
-  totalQuestions,
+    question,
+    answers,
+    callback,
+    userAnswer,
+    questionNumber,
+    totalQuestions,
 }) => (
-  <div>
-    <p className="number">
-      {" "}
-      Question: {questionNumber} / {totalQuestions}
-    </p>
-    <p dangerouslySetInnerHTML={{ __html: question }} />
-    <div>
-      {answers.map((answer) => (
+    <Wrapper>
+        <p className="number">
+            {" "}
+            Question: {questionNumber} / {totalQuestions}
+        </p>
+        <p dangerouslySetInnerHTML={{ __html: question }} />
         <div>
-          <button disabled={userAnswer} onClick={callback}>
-            <span dangerouslySetInnerHTML={{ __html: answer }} />
-          </button>
+            {answers.map((answer) => (
+                <ButtonWrapper key={answer}
+                    correct={userAnswer?.correctAnswer === answer}
+                    userClicked={userAnswer?.answer === answer}>
+
+                    <button disabled={userAnswer ? true : false} value={answer} onClick={callback}>
+                        <span dangerouslySetInnerHTML={{ __html: answer }} />
+                    </button>
+                </ButtonWrapper>
+            ))}
         </div>
-      ))}
-    </div>
-  </div>
+    </Wrapper>
 );
 
 export default QuestionCard;

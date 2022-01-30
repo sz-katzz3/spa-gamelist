@@ -10,8 +10,8 @@ function App() {
         <NavLink to={"/"}><HomePage /></NavLink>
       </nav>
       <Routes>
-        <Route path={"/"}  element={HomePage} />
-        <Route path={"/game"} element={Game} />
+        <Route path={"/"}  element={<HomePage />} />
+        <Route path={"/game"} element={<Game />} />
       </Routes>
     </div>
   );
